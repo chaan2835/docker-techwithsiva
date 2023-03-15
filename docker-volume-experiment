@@ -1,0 +1,51 @@
+pull any one image from the docker hub
+docker pull nginx
+
+
+run that image as a container
+docker run -it -d -p 80:80 my-nginx
+
+go inside to the container
+docker exec -it my-nginx bash
+cd /usr/share/nginx/html 
+
+create a dummy file with .html extension
+echo "jkjdsfl" > hi.html
+
+try to get the hi.html form the nginx server by hitting the server using pubilicip/hi.html
+==========================
+creating a volume for docker 
+
+why we are creating docker volume?
+
+  if we delete the running container in the docker engine the we will lost the data along with the contaier to avoid this we are using 
+  docker volumes. if we add the volume to the container then the data in that contianer will be stored in the volume and we can make any
+  changes as per our requirement
+
+docker volume create [volume-name]
+
+to check the created volume path or default docker volume path 
+
+/var/lib/docker/volumes/
+
+to check the full the details of the volume
+docker inspect [volume-name]
+=======================
+
+adding the volume to any container
+
+docker run -it -d -p 80:80 -v [volume-name]:/usr/share/nginx/html --name [user-defined container-name] [image-name/image-id]
+
+go inside to the container
+docker exec -it [user-defined container-name] bash
+cd /usr/share/nginx/html 
+
+create a dummy file with .html extension
+echo "jkjdsflfdsj" > hello.html
+
+try to get the hello.html form the nginx server by hitting the server using pubilicip/hello.html
+
+remove the container which is created now and check the default volume path wheather the newly created file is there or not
+
+
+
