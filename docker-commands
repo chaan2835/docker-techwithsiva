@@ -1,0 +1,9 @@
+docker images --filter "label=author=name"
+
+this will filter the images which is having the name if we have so many images in our docker server
+========================
+to override the env variables 
+
+docker run -e duration=30hrs [image-name]:[tag] [command]
+docker run -e duration=30hrs env:v1 env 
+=================
