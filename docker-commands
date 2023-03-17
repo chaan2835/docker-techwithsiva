@@ -7,3 +7,10 @@ to override the env variables
 docker run -e duration=30hrs [image-name]:[tag] [command]
 docker run -e duration=30hrs env:v1 env 
 =================
+arg is used to send the arguments when creating the image i.e., is building the image using docker file
+
+sample docker file 
+ARG VERSION
+FROM alamalinux:${VERSION}
+
+docker build -t arg:v1 --docker-arg VERSION=9 . 
