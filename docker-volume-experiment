@@ -47,5 +47,14 @@ try to get the hello.html form the nginx server by hitting the server using pubi
 
 remove the container which is created now and check the default volume path wheather the newly created file is there or not
 
+===============================
+
+creating docker volume and adding some files using docker file 
+
+FROM nginx
+RUN mkdir /myvol
+RUN echo "good mroning" > /myvol/greetings.html
+VOLUME /myvol
+
 
 
