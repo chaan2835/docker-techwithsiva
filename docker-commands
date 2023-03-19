@@ -14,3 +14,11 @@ ARG VERSION
 FROM alamalinux:${VERSION}
 
 docker build -t arg:v1 --docker-arg VERSION=9 . 
+==================
+removing docker network which is already to network
+
+docker network disconnect [network-name] [container-name]
+
+removing docker network 
+
+docker network rm [network-name/id]
