@@ -22,3 +22,7 @@ docker network disconnect [network-name] [container-name]
 removing docker network 
 
 docker network rm [network-name/id]
+==============================
+remove unused data 
+
+docker system prune 
