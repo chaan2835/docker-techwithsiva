@@ -34,3 +34,45 @@ What is the difference between ADD vs COPY?
 ADD and COPY does the same, copying the files from local to container. But ADD has some extra capabilities.
 1. ADD can download the resources from internet to Container.
 2. ADD can directly direct unzip the file into container if it is recognized format.
+===========================================
+What is the Difference between ARG and ENV?
+
+1. ARG is the instruction used to hold variables at the build time. We can pass the values from command line using --build-arg KEY=VALUE 
+docker build --build-arg USERNAME=sivakumar -t image-name:version . 
+
+2. ARG variables are valid only for build time not valid at the time container running. 
+
+3. ARG is the only instruction that can be written before FROM, ARG before FROM is valid till FROM statement only. 
+
+4. ENV is the instruction used to hold variables at the build time and container as well. 
+
+5. We mix ENV and ARG for best results, like assign the value of ARG to ENV variable.
+=================================
+What are Docker volumes?
+
+Docker by default remove the data when it is deleted. So when we are running stateful applications like databases we need to use Docker volumes that will not delete the data after container is deleted.
+to create volume
+Named volumes
+-------------------
+docker volume create [name-of-volume]
+docker volume ls
+docker run -v [name-of-volume]:[container-path] [image]:[version]
+
+there is another way anonymous volumes, i.e without creating volumes we can directly mount the directory in host to the container. But this is not recommended.
+
+docker run -v /some/path/inhost:/container/path [image]:[version]
+============================================
+
+Tell us the best practices you implemented while creating docker images?
+
+1. Use light weight base images like alpine, busybox, etc.
+2. Multi stage builds, remove unnecessary installations.
+3. Non root users
+4. Use volumes for stateful applications
+5. Use docker compose
+6. Use env variables instead of hard coding.
+7. Use dedicated custom networks.
+8. Dont keep secrets in images.
+9. Scan the images and fix vulnerabilities.
+10. Limit resources CPU, RAM
+11. Configure health checks
